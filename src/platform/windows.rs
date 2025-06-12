@@ -6,11 +6,9 @@ const FILE_ATTRIBUTE_READONLY: u32 = 0x1;
 
 pub fn format_permissions(metadata: &Metadata) -> String {
     let attributes = metadata.file_attributes();
-    
     let dir = if (attributes & FILE_ATTRIBUTE_DIRECTORY) != 0 { 'd' } else { '-' };
     let readonly = if (attributes & FILE_ATTRIBUTE_READONLY) != 0 { 'r' } else { '-' };
     let archive = if dir == 'd' { '-' } else { 'a' };
-
     format!("{}{}{}{}{}", dir, archive, readonly, "-", "-")
 }
 

@@ -15,7 +15,6 @@ impl GitStatusCache {
             Ok(repo) => {
                 let mut status_opts = git2::StatusOptions::new();
                 status_opts.include_untracked(true).recurse_untracked_dirs(true);
-
                 let statuses = repo.statuses(Some(&mut status_opts))?;
                 let mut status_map = HashMap::new();
 
