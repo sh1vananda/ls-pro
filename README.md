@@ -1,9 +1,3 @@
-Of course! A good README is essential. It's the front page of your project—it needs to explain what `ls-pro` is, why it's cool, and how to get it running.
-
-Based on everything we've built, here is a nice and simple `README.md` file for the project. You can create a file named `README.md` in the root of your `ls-pro` project and paste this content into it.
-
----
-
 # ls-pro
 
 `ls-pro` is a modern, feature-rich replacement for the classic `ls` command, written in Rust. Inspired by tools like `exa`, it aims to be more informative, visually appealing, and developer-friendly.
