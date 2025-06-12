@@ -1,8 +1,7 @@
 use std::fs::Metadata;
-use std::os::unix::fs::PermissionsExt;
+use std::os::unix::fs::{MetadataExt, PermissionsExt};
 use users::{Users, UsersCache};
 
-// Create a cache for user/group lookups for performance
 lazy_static::lazy_static! {
     static ref USERS_CACHE: UsersCache = UsersCache::new();
 }
@@ -25,12 +24,17 @@ pub fn format_permissions(metadata: &Metadata) -> String {
 }
 
 pub fn get_owner(metadata: &Metadata) -> String {
-    use std::os::unix::fs::MetadataExt;
     let user = USERS_CACHE.get_user_by_uid(metadata.uid());
     let group = USERS_CACHE.get_group_by_gid(metadata.gid());
-    
-    let user_name = user.map_or_else(|| metadata.uid().to_string(), |u| u.name().to_string_lossy().into_owned());
-    let group_name = group.map_or_else(|| metadata.gid().to_string(), |g| g.name().to_string_lossy().into_owned());
+
+    let user_name = user.map_or_else(
+        || metadata.uid().to_string(),
+        |u| u.name().to_string_lossy().into_owned(),
+    );
+    let group_name = group.map_or_else(
+        || metadata.gid().to_string(),
+        |g| g.name().to_string_lossy().into_owned(),
+    );
 
     format!("{} {}", user_name, group_name)
 }
