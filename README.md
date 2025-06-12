@@ -92,7 +92,3 @@ This shows the file tree with full details, Git status, and calculated directory
 ```bash
 ls-pro --tree --long --git --calculate-sizes
 ```
-
-
-## License
-This project is licensed under the MIT License.
