@@ -3,7 +3,6 @@ use git2::{Error, Repository, Status};
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
 
-// Define a module-specific Result type alias.
 type Result<T> = std::result::Result<T, Error>;
 
 pub struct GitStatusCache {
@@ -32,7 +31,6 @@ impl GitStatusCache {
                         }
                     }
                 }
-
                 Ok(Some(Self { statuses: status_map }))
             }
             Err(_) => Ok(None),
