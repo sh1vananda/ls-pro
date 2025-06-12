@@ -8,6 +8,7 @@ clap = { version = "4.5.40", features = ["derive"] }
 crossterm = "0.29.0"
 chrono = "0.4"
 lazy_static = "1.4.0"
+ignore = "0.4.23"
 
 [target.'cfg(unix)'.dependencies]
 users = "0.11"
